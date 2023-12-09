@@ -3,5 +3,5 @@ import com.aspose.words.*;
 Document doc = new Document();
 DocumentBuilder builder = new DocumentBuilder(doc);
 
-Shape shape = builder.insertImage("Google_Chat_icon_29.png");
+Shape shape = builder.insertImage("Google_Hangouts_Chat_icon_(2017-2020).png");
 shape.getImageData().save("Output.png");
