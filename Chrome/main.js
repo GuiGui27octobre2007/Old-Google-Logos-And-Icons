@@ -8,6 +8,8 @@ var urls = {
     "calendar_logo": chrome.runtime.getURL("/images/calendar/calendar_logo.png"),
     "meet_favicon": chrome.runtime.getURL("/images/meet/meet_favicon.png"),
     "meet_logo": chrome.runtime.getURL("/images/meet/meet_logo.png")
+    "chat_favicon": chrome.runtime.getURL("images/chat/chat_favicon.png")
+    "chat_logo": chrome.runtime.getURL("images/chat/chat_logo.png")
 }
 
 function change(page){
@@ -22,6 +24,15 @@ function change(page){
                 document.querySelector('link[rel="icon"]').href = urls.drive_favicon;
             })
             break;
+            case "meet":
+                repeatFor(10000, 100, () => {
+                    var links = document.querySelectorAll('link[rel="shortcut icon"]');
+                    links.forEach(element => {
+                        element.href = urls.meet_favicon;
+                    });
+                })
+            default:
+                break;
         case "calendar":
             repeatFor(10000, 100, () => {
                 document.querySelectorAll('link[type="image/x-icon"]')[0].href = urls.calendar_favicon;
@@ -29,11 +40,11 @@ function change(page){
                 changeDynamics();
             })
             break;
-        case "meet":
+        case "chat":
             repeatFor(10000, 100, () => {
                 var links = document.querySelectorAll('link[rel="shortcut icon"]');
                 links.forEach(element => {
-                    element.href = urls.meet_favicon;
+                    element.href = urls.chat_favicon;
                 });
             })
         default:
@@ -71,4 +82,7 @@ if (window.location.href.includes("calendar.google.com")){
 }
 if (window.location.href.includes("meet.google.com")){
     change("meet");
+}
+if (Widow.location.href.includes("chat.google.com")){
+    change("chat");
 }
